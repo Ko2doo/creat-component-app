@@ -1,0 +1,37 @@
+{
+  "name": "creat-component-app",
+  "version": "1.0.0",
+  "description": "Консольная утилита, для создания компонентов nunjucks",
+  "main": "app.mjs",
+  "type": "module",
+  "bin": {
+    "create-njk-component-app": "app.mjs"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ko2doo/creat-component-app.git"
+  },
+  "scripts": {
+    "start": "node app.mjs"
+  },
+  "preferGlobal": false,
+  "author": {
+    "name": "NИ",
+    "email": "galaxyrobotix@gmail.com"
+  },
+  "engines": {
+    "node": ">= v18.14.0",
+    "npm": ">= 9.3.1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "yargs": "^17.7.0"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.22"
+  }
+}
