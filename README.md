@@ -15,11 +15,11 @@
 <br>
 
 ```
-component/
-  dependencies/
-  component.njk
-  component.scss
-  component.json
+└── component/
+    ├──dependencies/
+    ├──component.njk
+    ├──component.scss
+    └──component.json
 ```
 
 ***
