@@ -16,7 +16,7 @@
 
 ```
 └── component/
-    ├──dependencies/
+    │  └──dependencies/
     ├──component.njk
     ├──component.scss
     └──component.json
