@@ -23,37 +23,37 @@ import { hideBin } from 'yargs/helpers';
 import createComponent from './utils/componentSpawner.mjs';
 
 const yargsCliApp = () => {
-yargs(hideBin(process.argv))
-  .usage('Использование: $0 <command> [option]')
-  .command('create', 'объявить создание компонента', {
-    // создадим объект name, для записи в него того
-    // что будет приходить после ввода пользователем в командной строке.
-    name: {
-      type: 'string'
-    }
+  yargs(hideBin(process.argv))
+    .usage('Использование: $0 <command> [option]')
+    .command('create', 'объявить создание компонента', {
+      // создадим объект name, для записи в него того
+      // что будет приходить после ввода пользователем в командной строке.
+      name: {
+        type: 'string'
+      }
 
-  }, (argv) => {
-    // вызовем нашу фун-цию из /utils
-    // вытаскиваем данные из массива,
-    // обращаемся к объекту name через argv.name
-    // и получаем данные для нейминга компонента
-    createComponent(argv.name)
-  })
-  // опции для вывода информации по команде -n --n
-  .option('name', {
-    type: 'string',
-    alias: 'n',
-    demandOption: true,
-    describe: 'задать имя компонента'
-  })
-  .demandCommand(1)
-  .example("node $0 create --name='componentName'")
-  .help('help', 'помощь по командам')
-  .alias('help', 'h')
-  .version('1.0.0')
-  .alias('version', 'v')
-  .parse()
-  .argv
+    }, (argv) => {
+      // вызовем нашу фун-цию из /utils
+      // вытаскиваем данные из массива,
+      // обращаемся к объекту name через argv.name
+      // и получаем данные для нейминга компонента
+      createComponent(argv.name)
+    })
+    // опции для вывода информации по команде -n --n
+    .option('name', {
+      type: 'string',
+      alias: 'n',
+      demandOption: true,
+      describe: 'задать имя компонента'
+    })
+    .demandCommand(1)
+    .example("node $0 create --name='componentName'")
+    .help('help', 'помощь по командам')
+    .alias('help', 'h')
+    .version('1.0.0')
+    .alias('version', 'v')
+    .parse()
+    .argv
 };
 
 export default yargsCliApp;
