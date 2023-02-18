@@ -32,7 +32,7 @@ const injectStyle = async (inject) => {
         console.log(chalk.blue(`Directory is found: ${findDir}\nComponent files is found: ${files}`)); // если находим файл, сообщаем об успехе.
 
         // Добавим в конец main.scss файла импорт файла стилей нашего найденного компонента
-        fs.appendFile(injectTo, styleImport, 'utf8',(err) => {
+        fs.appendFile(injectTo, styleImport, 'utf8', (err) => {
             if (err) {
               console.log(chalk.red(err));
             } else {
