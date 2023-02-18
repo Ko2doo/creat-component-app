@@ -21,6 +21,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import createComponent from './utils/componentSpawner.mjs';
+import injectStyle from './utils/injectStyles.mjs';
 
 const yargsCliApp = () => {
   yargs(hideBin(process.argv))
@@ -43,8 +44,26 @@ const yargsCliApp = () => {
     .option('name', {
       type: 'string',
       alias: 'n',
-      demandOption: true,
+      demandOption: false,
       describe: 'задать имя компонента'
+    })
+    // команда для импорта стилей компонента в главный стилевый файл:
+    .command('inject', 'инъекция файла стилей компонента, в главный файл стилей', {
+      // создадим объект, в который будет попадать строка
+      inject: {
+        type: 'string'
+      }
+    }, (argv) => {
+      // вызовем нашу фун-цию
+      injectStyle(argv.inject)
+      console.log(argv.inject)
+    })
+    // опции для инъекций
+    .option('inject', {
+      type: 'string',
+      alias: 'style',
+      demandOption: false,
+      describe: 'искать компонент по имени, и инъектировать стили компонента в главный файл стилей проекта.'
     })
     .demandCommand(1)
     .example("node $0 create --name='componentName'")

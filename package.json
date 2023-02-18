@@ -2,10 +2,10 @@
   "name": "creat-component-app",
   "version": "1.0.0",
   "description": "Консольная утилита, для создания компонентов nunjucks",
-  "main": "app.mjs",
+  "main": "./.cli/creat-component-app.mjs",
   "type": "module",
   "bin": {
-    "create-njk-component-app": "app.mjs"
+    "creat-component-app": "./.cli/creat-component-app.mjs"
   },
   "keywords": [
     "cli"

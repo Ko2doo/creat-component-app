@@ -1,3 +1,5 @@
+// Утилита для создания компонента
+
 'use strict';
 
 import fs from 'fs';
@@ -7,7 +9,7 @@ import chalk from 'chalk';
 
 const createComponent = async (name) => {
   try {
-    const directory = `./${name}/`;
+    const directory = `./src/templates/components/${name}/`;
     const subdir = './dependencies/';
 
     // передадим в переменную до расширения файла,
