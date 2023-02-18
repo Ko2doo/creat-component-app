@@ -56,7 +56,6 @@ const yargsCliApp = () => {
     }, (argv) => {
       // вызовем нашу фун-цию
       injectStyle(argv.inject)
-      console.log(argv.inject)
     })
     // опции для инъекций
     .option('inject', {
