@@ -14,45 +14,43 @@ const createComponent = async (name) => {
 
     // передадим в переменную до расширения файла,
     // имя, пришедшее из функции, и подставим его.
-    const files = [
-      `${name}.njk`,
-      `${name}.scss`,
-      `${name}.json`
-    ];
+    const files = [`${name}.njk`, `${name}.scss`, `${name}.json`];
 
     // проверяем на пустышку
     if (name === undefined) {
-      console.log(chalk.red(`Чтобы создать компонент, необходимо использовать ключ: \n${chalk.blue('-n')} или ${chalk.blue('--name')} после ключа передать ему имя!`));
+      console.error(chalk.red(`To create a component, one of the two keys must be used: \n${chalk.blue('-n')} или ${chalk.blue('--name')} pass the name after the key!`));
     } else {
       // тут объявляем что мы собираемся создать директорию с файлами
-      await fs.mkdir(path.normalize(directory), {recursive: true}, (err) => {
-        if (err) throw err;
-        console.log(chalk.blue('------ * component * ------'));
-        console.log(chalk.yellow(`Component directory created: ${directory}`));
+      await fs.mkdir(path.normalize(directory), { recursive: true }, (err) => {
+        if (err) {
+          console.error(chalk.red(err));
+        }
+
+        console.info(chalk.blue('------ * component * ------'));
+        console.info(chalk.yellow(`Component directory created: ${directory}`));
 
         // после создания основной дир-рии, создадим внутри ещё одну.
-        fs.mkdir(`${directory}${path.normalize(subdir)}`, {recursive: true}, (err) => {
-          if (err) throw err;
-          console.log(chalk.yellow(`Subdirectory created: ${subdir}`));
+        fs.mkdir(`${directory}${path.normalize(subdir)}`, { recursive: true }, (err) => {
+          if (err) {
+            console.error(chalk.red(err));
+          }
+
+          console.info(chalk.yellow(`Subdirectory created: ${subdir}`));
         });
 
         // перебираем массив, записываем значения передаваемое фун-ции
         // в переменные перед объявлением расширения файла и создаём файлы.
-        files.forEach(file => {
-          fs.open(
-            `${directory}${path.basename(file)}`,
-            'w',
-            (err) => {
-              if (err) throw err;
-              console.log(chalk.green(`Component files created: ${file}`)); // в консоли, говорим что всё ок.
+        files.forEach((file) => {
+          fs.open(`${directory}${path.basename(file)}`, 'w', (err) => {
+            if (err) {
+              console.error(chalk.red(err));
             }
-          );
-        });
 
+            console.info(chalk.green(`Component files created: ${file}`)); // в консоли, говорим что всё ок.
+          });
+        });
       });
     }
-
-
   } catch (error) {
     console.error(error.message);
   }
