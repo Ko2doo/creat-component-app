@@ -1,6 +1,6 @@
 {
   "name": "creat-component-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Консольная утилита, для создания компонентов nunjucks",
   "main": "./creat-component-app.mjs",
   "type": "module",
