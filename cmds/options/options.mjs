@@ -2,17 +2,17 @@
 'use strict';
 
 export const OPTIONS = {
-  'name': {
+  name: {
     type: 'string',
     alias: 'n',
     demandOption: false,
-    describe: 'задать имя компонента'
+    describe: 'pass component name',
   },
 
-  's': {
+  s: {
     type: 'string',
     alias: 'style',
     demandOption: false,
-    describe: 'искать компонент по имени - для импорта стилей компонента в главный файл стилей проекта.'
-  }
+    describe: "lookup component by name - to import the component's styles into the main stylesheet of the project.",
+  },
 };

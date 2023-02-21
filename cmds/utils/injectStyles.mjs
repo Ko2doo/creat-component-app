@@ -9,7 +9,6 @@ import chalk from 'chalk';
 
 const __dirname = path.resolve();
 
-
 const injectStyle = async (style) => {
   try {
     const value = style; // переопределяем переменную, для красоты кода.
@@ -29,40 +28,39 @@ const injectStyle = async (style) => {
     // ищем директорию с компонентом, имя получаем из командной.
     await fs.readdir(path.resolve(__dirname, findDir), 'utf8', (err, files) => {
       if (err) {
-        console.log(chalk.red(err)); // сообщаем ошибку в консоли
+        console.error(chalk.red(err)); // сообщаем ошибку в консоли
       } else {
-
-        console.log(chalk.yellow(`Directory is found: ${findDir}`));
+        console.info(chalk.yellow(`Directory is found: ${findDir}`));
 
         // в цикле перебираем файлы и выводим инфу в консоль.
         for (let file of files) {
-          console.log(chalk.blue(`\nComponent items is found: ${file}`));
+          console.info(chalk.blue(`\nComponent items is found: ${file}`));
         }
 
         // проверяем является ли файл стилей, файлом если да, импортируем его в главный файл стилей.
         fs.stat(`${findDir}/${value}.scss`, (errStatus, status) => {
           if (errStatus) {
-            console.log(chalk.red(errStatus));
+            console.error(chalk.red(errStatus));
           }
 
           // это файл?
           if (status.isFile()) {
-            console.log(chalk.white(`\n${value}.scss - действительно является файлом, добавляем импорт в главный файл стилей...`));
+            console.info(chalk.white(`\n${value}.scss - is indeed a file, add the import to the main stylesheet...`));
 
             // Добавим в конец main.scss, импорт файла стилей нашего найденного компонента
             fs.appendFile(injectTo, styleImport, 'utf8', (err) => {
               if (err) {
-                console.log(chalk.red(err));
+                console.error(chalk.red(err));
               } else {
-                console.log(chalk.green(`\nFile: ${injectTo}\nSuccessfully appended import to: ${findDir}.scss`));
+                console.info(chalk.green(`\nFile: ${injectTo}\nSuccessfully appended import to: ${findDir}.scss`));
               }
             });
+          } else {
+            console.error(chalk.red(`\n${value} - is not a file.`));
           }
         });
       }
-
     });
-
   } catch (error) {
     console.error(error.message);
   }
