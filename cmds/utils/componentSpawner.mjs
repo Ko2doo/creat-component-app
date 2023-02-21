@@ -18,7 +18,7 @@ const createComponent = async (name) => {
 
     // проверяем на пустышку
     if (name === undefined) {
-      console.error(chalk.red(`To create a component, one of the two keys must be used: \n${chalk.blue('-n')} или ${chalk.blue('--name')} pass the name after the key!`));
+      console.error(chalk.red(`To create a component, one of the two keys must be used: \n${chalk.blue('-n')} or ${chalk.blue('--name')} pass the name after the key!`));
     } else {
       // тут объявляем что мы собираемся создать директорию с файлами
       await fs.mkdir(path.normalize(directory), { recursive: true }, (err) => {
