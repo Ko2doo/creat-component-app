@@ -14,7 +14,7 @@ const createComponent = async (name) => {
 
     // передадим в переменную до расширения файла,
     // имя, пришедшее из функции, и подставим его.
-    const files = [`${name}.njk`, `${name}.scss`, `${name}.json`];
+    const files = [`${name}.nunjucks.html`, `${name}.scss`, `${name}.data.json`];
 
     // проверяем на пустышку
     if (name === undefined) {
